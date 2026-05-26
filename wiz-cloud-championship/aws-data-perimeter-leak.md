@@ -57,8 +57,9 @@ Jump Server (no creds)
 ### Phase 1 — Jump Server Recon
 
 The jump server had no AWS credentials. Running 
-`aws sts get-caller-identity` failed immediately. However, 
-inspecting environment variables revealed a Spring Boot application 
+`aws sts get-caller-identity` failed immediately. 
+
+However, inspecting environment variables revealed a Spring Boot application 
 running at `https://challenge01.cloud-champions.com` with embedded 
 basic auth credentials exposed in an `INFO_MSG` environment variable.
 
@@ -79,7 +80,7 @@ variables, config properties, and all registered HTTP routes.
 ```bash
 curl https://ctf:88sPVWyC2P3p@challenge01.cloud-champions.com/actuator
 
-BASE="curl https://ctf:88sPVWyC2P3p@challenge01.cloud-champions.com"
+BASE="https://ctf:88sPVWyC2P3p@challenge01.cloud-champions.com"
 
 ```
 
