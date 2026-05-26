@@ -26,12 +26,19 @@ credentials.
 ## Attack Chain
 
 Jump Server (no creds)
+
     → Spring Boot Actuator (exposed management endpoints)
+    
         → /actuator/env (bucket name + SSRF endpoint discovery)
+        
             → /actuator/mappings (/proxy SSRF vector)
+            
                 → EC2 Metadata Service (IMDSv2 credential theft)
+                
                     → IAM Role Credentials (inside perimeter)
+                    
                         → Presigned URL routed through proxy
+                        
                             → FLAG
 
 ---
